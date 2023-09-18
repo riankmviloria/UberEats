@@ -1,12 +1,15 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, Text, View } from "react-native";
 import styles from "./styles";
 
-const RestaurantDetailsPage = ({ restaurant }) => {
+const DEFAULT_IMAGE =
+  "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant1.jpeg";
+
+const RestaurantDetailsScreen = ({ restaurant }) => {
   return (
     <View style={styles.page}>
       {/* Cover Image */}
       <Image
-        source={{ uri: restaurant.image }}
+        source={{ uri: restaurant.image ? restaurant.image : DEFAULT_IMAGE }}
         style={styles.image}
         resizeMode="cover"
       />
@@ -25,4 +28,4 @@ const RestaurantDetailsPage = ({ restaurant }) => {
   );
 };
 
-export default RestaurantDetailsPage;
+export default RestaurantDetailsScreen;

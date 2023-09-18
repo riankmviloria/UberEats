@@ -1,30 +1,30 @@
-import { useState } from "react";
-import { View, Text, StyleSheet, FlatList } from "react-native";
+import { View, Text, StyleSheet, FlatList, Pressable } from "react-native";
 import restaurants from "../../../assets/restaurants.json";
-import { AntDesign } from "@expo/vector-icons";
 import BasketListItem from "../../components/BasketListItem";
+import { useNavigation } from "@react-navigation/native";
 const restaurant = restaurants[0];
 
 const BasketScreen = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.page}>
       <Text style={styles.name}>{restaurant.name}</Text>
 
       <Text style={styles.orders}>Orders:</Text>
-      {/* <FlatList
-        data={restaurant.dishes}
-        renderItem={({ item }) => <BasketListItem basketMenu={item} />}
-      /> */}
+
       <FlatList
         data={restaurant.dishes}
         renderItem={({ item }) => <BasketListItem basket={item} />}
       />
-      {/* <BasketListItem /> */}
+
       <View style={styles.separator} />
 
-      <View style={styles.button}>
+      <Pressable
+        style={styles.button}
+        // onPress={() => navigation.navigate("Basket")}
+      >
         <Text style={styles.buttonText}>Create Order</Text>
-      </View>
+      </Pressable>
     </View>
   );
 };
@@ -35,6 +35,11 @@ const styles = StyleSheet.create({
     width: "100%",
     paddingVertical: 40,
     padding: 10,
+  },
+  orders: {
+    fontWeight: "600",
+    marginTop: 20,
+    fontSize: 19,
   },
   name: {
     fontSize: 24,

@@ -1,11 +1,28 @@
-import { useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
-import restaurants from "../../../assets/restaurants.json";
+import { useEffect, useState } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Pressable,
+  ActivityIndicator,
+} from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-const menu = restaurants[0].dishes[0];
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { DataStore } from "aws-amplify";
+import { Menu } from "../../models";
 
 const MenuDetailsScreen = () => {
+  const navigation = useNavigation();
+  const [menu, setMenu] = useState(null);
   const [quantity, setQuantity] = useState(1);
+  const route = useRoute();
+  const menuID = route.params?.id;
+
+  useEffect(() => {
+    if (id) {
+      DataStore.query(Menu, menuID).then(setMenu);
+    }
+  }, [id]);
 
   const onMinus = () => {
     if (quantity > 1) {
@@ -19,6 +36,10 @@ const MenuDetailsScreen = () => {
   const getTotal = () => {
     return (menu.price * quantity).toFixed(2);
   };
+
+  if (!menu) {
+    return <ActivityIndicator size={"large"} color={"gray"} />;
+  }
   return (
     <View style={styles.page}>
       <Text style={styles.name}>{menu.name}</Text>
@@ -40,11 +61,14 @@ const MenuDetailsScreen = () => {
           onPress={onPlus}
         />
       </View>
-      <View style={styles.button}>
+      <Pressable
+        style={styles.button}
+        onPress={() => navigation.navigate("Basket")}
+      >
         <Text style={styles.buttonText}>
           Add {quantity} to basket | ${getTotal()}
         </Text>
-      </View>
+      </Pressable>
     </View>
   );
 };

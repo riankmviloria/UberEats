@@ -1,9 +1,6 @@
 import { View, Text, StyleSheet } from "react-native";
 
-// const BasketListItem = ({ basketMenu }) => {
 const BasketListItem = ({ basket }) => {
-  console.log(basket);
-  //   console.log(basket);
   return (
     <View style={styles.row}>
       <View style={styles.quantityContainer}>
@@ -19,6 +16,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginVertical: 15,
+    paddingHorizontal: 10,
   },
   orderTotal: {
     marginLeft: "auto",

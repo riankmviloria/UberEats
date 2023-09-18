@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-ubereatsuser-dev-162557-authRole",
+      "UnauthRoleArn": "arn:aws:iam::024245666999:role/amplify-ubereatsuser-dev-162557-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::024245666999:role/amplify-ubereatsuser-dev-162557-authRole",
+      "Region": "ap-southeast-2",
+      "DeploymentBucketName": "amplify-ubereatsuser-dev-162557-deployment",
+      "UnauthRoleName": "amplify-ubereatsuser-dev-162557-unauthRole",
+      "StackName": "amplify-ubereatsuser-dev-162557",
+      "StackId": "arn:aws:cloudformation:ap-southeast-2:024245666999:stack/amplify-ubereatsuser-dev-162557/ab6bcf60-546a-11ee-8e91-0a3792217772",
+      "AmplifyAppId": "d62vaytq2p0n5"
+    },
+    "categories": {
+      "auth": {
+        "ubereatsuserf8563ba2": {}
+      },
+      "api": {
+        "amplifyDatasource": {}
+      }
+    }
+  }
+}
